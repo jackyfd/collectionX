@@ -154,15 +154,7 @@ public class ListX<E> extends ArrayList<E> implements Ordered<E> {
         return result;
     }
 
-    public <R> R folder(R seed, BiFunction<? super R, ? super E, ? super R> func) {
-        R result = seed;
-        for (E e : this) {
-            result = (R) func.apply(result, e);
-        }
-        return result;
-    }
-
-    public E reduce(BiFunction<? super E, ? super E, ? super E> func) {
+        public E reduce(BiFunction<? super E, ? super E, E> func) {
         return tail().folder(head(), func);
     }
 

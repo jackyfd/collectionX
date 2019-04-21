@@ -83,11 +83,11 @@ public class MultimapX<K, V> {
         return result;
     }
 
-    public boolean removeKey(K k) {
+    public boolean remove(K k) {
         return data.remove(k) != null;
     }
 
-    private SetX<V> getOrCreate(K k) {
+    public SetX<V> getOrCreate(K k) {
         SetX<V> values = data.get(k);
         if (values == null) {
             values = SetX.newSet();

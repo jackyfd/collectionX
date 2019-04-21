@@ -2,6 +2,8 @@ package com.github.collectionx;
 
 
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -119,6 +121,42 @@ public interface CollectionX<E> extends Collection<E> {
             i++;
         }
         return sb.toString();
+    }
+
+    default  <R> R folder(R seed, BiFunction<? super R, ? super E, E> func) {
+        R result = seed;
+        for (E e : this) {
+            result = (R) func.apply(result, e);
+        }
+        return result;
+    }
+
+    default int intSum() {
+        int total = 0;
+        Iterator<E> iterator = iterator();
+        while(iterator.hasNext()) {
+            E next = iterator.next();
+            if(next instanceof Integer) {
+                total += (Integer) next;
+            } else {
+                throw new IllegalStateException("collection contains non-int value: " + next);
+            }
+        }
+        return total;
+    }
+
+    default double doubleSum() {
+        double total = 0;
+        Iterator<E> iterator = iterator();
+        while(iterator.hasNext()) {
+            E next = iterator.next();
+            if(next instanceof Double) {
+                total += (Double) next;
+            } else {
+                throw new IllegalStateException("collection contains non-double value: " + next);
+            }
+        }
+        return total;
     }
 
 }
