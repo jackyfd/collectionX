@@ -15,6 +15,11 @@ public class ListXTest {
     private final ListX<Integer> emptyList = with();
 
     @Test
+    public void count() {
+        assertEquals(2, listOne.count(it -> it >= 2));
+    }
+
+    @Test
     public void head() {
         assertEquals(1, listOne.head().intValue());
     }

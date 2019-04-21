@@ -101,17 +101,17 @@ public interface CollectionX<E> extends Collection<E> {
         return !containsAll(c);
     }
 
-    default String mkString(String seperator) {
-        return mkString(seperator, "", "");
+    default String mkString(String separator) {
+        return mkString(separator, "", "");
     }
 
-    default String mkString(String seperator, String start, String end) {
+    default String mkString(String separator, String start, String end) {
         StringBuilder sb = new StringBuilder(start);
         int i = 0;
         for (E e : this) {
             sb.append(e);
             if (i > 0 && i < size() - 1) {
-                sb.append(seperator);
+                sb.append(separator);
             }
             if (i == size() - 1) {
                 sb.append(end);

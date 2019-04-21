@@ -4,6 +4,7 @@ package com.github.collectionx;
 import com.github.collectionx.internal.PairX;
 
 import java.util.Map;
+import java.util.function.Predicate;
 
 public class MultimapX<K, V> {
 
@@ -19,6 +20,16 @@ public class MultimapX<K, V> {
             result.put(entry.getKey(), entry.getValue());
         }
         return result;
+    }
+
+    public int countByKey(Predicate<K> predicate) {
+        int total = 0;
+        for (K key : keys()) {
+            if(predicate.test(key)) {
+                total ++;
+            }
+        }
+        return total;
     }
 
     public int size() {
@@ -72,7 +83,7 @@ public class MultimapX<K, V> {
         return result;
     }
 
-    public boolean removeAll(K k) {
+    public boolean removeKey(K k) {
         return data.remove(k) != null;
     }
 

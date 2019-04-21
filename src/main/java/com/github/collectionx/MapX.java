@@ -1,7 +1,5 @@
 package com.github.collectionx;
 
-
-
 import com.github.collectionx.internal.PairX;
 
 import java.util.HashMap;
@@ -9,7 +7,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class MapX<K, V> extends HashMap<K, V> {
+public class MapX<K, V> extends HashMap<K, V> implements MapXContract<K, V>{
 
     public static <K, V> MapX<K, V> newMap() {
         return new MapX<>();
@@ -103,15 +101,6 @@ public class MapX<K, V> extends HashMap<K, V> {
         return result;
     }
 
-    public <K2> MapX<K2, V> mapKey(Function<K, K2> fun) {
-        MapX<K2, V> result = new MapX<>();
-        for (Entry<K, V> entry : this.entrySet()) {
-            result.put(fun.apply(entry.getKey()), entry.getValue());
-        }
-        return result;
-    }
-
-
     public <V2> MapX<K, V2> mapValue(Function<V, V2> fun) {
         MapX<K, V2> result = new MapX<>();
         for (Entry<K, V> entry : this.entrySet()) {
@@ -134,19 +123,6 @@ public class MapX<K, V> extends HashMap<K, V> {
     @Override
     public ListX<V> values() {
         return ListX.newList(super.values());
-    }
-
-
-    public boolean isNotEmpty() {
-        return !isEmpty();
-    }
-
-    public boolean notContainsKey(K k) {
-        return !containsKey(k);
-    }
-
-    public boolean notContainsValue(V v) {
-        return !containsValue(v);
     }
 
 }

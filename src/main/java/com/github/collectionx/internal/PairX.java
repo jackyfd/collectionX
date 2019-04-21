@@ -11,7 +11,7 @@ public class PairX<K, V> implements Map.Entry<K, V> {
         return new PairX<>(k, v);
     }
 
-    PairX(K k, V v) {
+    public PairX(K k, V v) {
         this.k = k;
         this.v = v;
     }

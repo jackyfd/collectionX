@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 import java.util.function.Function;
 
-public class SortedMapX<K extends Comparable<K>, V> extends TreeMap<K, V> {
+public class SortedMapX<K extends Comparable<K>, V> extends TreeMap<K, V> implements MapXContract<K, V> {
 
     public static <K extends Comparable<K>, V> SortedMapX<K, V> newSortedMap() {
         return new SortedMapX<>();
@@ -71,7 +71,6 @@ public class SortedMapX<K extends Comparable<K>, V> extends TreeMap<K, V> {
         }
         return result;
     }
-
 
     public <V2> SortedMapX<K, V2> mapValue(Function<V, V2> fun) {
         SortedMapX<K, V2> result = new SortedMapX<>();
