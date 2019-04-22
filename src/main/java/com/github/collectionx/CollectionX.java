@@ -123,14 +123,13 @@ public interface CollectionX<E> extends Collection<E> {
         return sb.toString();
     }
 
-    default  <R> R folder(R seed, BiFunction<? super R, ? super E, E> func) {
+    default  <R> R folder(R seed, BiFunction<? super R, ? super E, ? super R> func) {
         R result = seed;
         for (E e : this) {
             result = (R) func.apply(result, e);
         }
         return result;
     }
-
     default int intSum() {
         int total = 0;
         Iterator<E> iterator = iterator();
@@ -150,8 +149,8 @@ public interface CollectionX<E> extends Collection<E> {
         Iterator<E> iterator = iterator();
         while(iterator.hasNext()) {
             E next = iterator.next();
-            if(next instanceof Double) {
-                total += (Double) next;
+            if(next instanceof Number) {
+                total += ((Number) next).doubleValue();
             } else {
                 throw new IllegalStateException("collection contains non-double value: " + next);
             }

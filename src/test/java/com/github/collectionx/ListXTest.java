@@ -113,4 +113,16 @@ public class ListXTest {
     public void distinct() {
         assertThat(listOne.join(listOne).distinct(), containsInAnyOrder(1,2,3));
     }
+
+    @Test
+    public void intSum() {
+        assertEquals(6, listOne.intSum());
+        assertEquals(11, listTwo.intSum());
+    }
+
+    @Test
+    public void doubleSum() {
+        assertEquals(6.0, listOne.doubleSum(), 1E-10);
+        assertEquals(11.0, listTwo.doubleSum(), 1E-10);
+    }
 }
