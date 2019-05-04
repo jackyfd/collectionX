@@ -26,7 +26,7 @@ public interface CollectionX<E> extends Collection<E> {
         int matches = 0;
         for (E e : this) {
             if (predicate.test(e)) {
-                matches ++;
+                matches++;
             }
         }
         return matches;
@@ -123,19 +123,34 @@ public interface CollectionX<E> extends Collection<E> {
         return sb.toString();
     }
 
-    default  <R> R folder(R seed, BiFunction<? super R, ? super E, ? super R> func) {
+    default <R> R folder(R seed, BiFunction<? super R, ? super E, ? super R> func) {
         R result = seed;
         for (E e : this) {
             result = (R) func.apply(result, e);
         }
         return result;
     }
+
+    default long longSum() {
+        long total = 0;
+        Iterator<E> iterator = iterator();
+        while (iterator.hasNext()) {
+            E next = iterator.next();
+            if (next instanceof Long) {
+                total += (Long) next;
+            } else {
+                throw new IllegalStateException("collection contains non-int value: " + next);
+            }
+        }
+        return total;
+    }
+
     default int intSum() {
         int total = 0;
         Iterator<E> iterator = iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             E next = iterator.next();
-            if(next instanceof Integer) {
+            if (next instanceof Integer) {
                 total += (Integer) next;
             } else {
                 throw new IllegalStateException("collection contains non-int value: " + next);
@@ -147,9 +162,9 @@ public interface CollectionX<E> extends Collection<E> {
     default double doubleSum() {
         double total = 0;
         Iterator<E> iterator = iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             E next = iterator.next();
-            if(next instanceof Number) {
+            if (next instanceof Number) {
                 total += ((Number) next).doubleValue();
             } else {
                 throw new IllegalStateException("collection contains non-double value: " + next);

@@ -1,8 +1,6 @@
 package com.github.collectionx;
 
 
-import com.github.collectionx.internal.PairX;
-
 import java.util.Map;
 import java.util.function.Predicate;
 
@@ -10,23 +8,23 @@ public class MultimapX<K, V> {
 
     private final MapX<K, SetX<V>> data = MapX.newMap();
 
-    public static<K, V> MultimapX<K, V> newMultimap(){
+    public static <K, V> MultimapX<K, V> newMultimap() {
         return new MultimapX<>();
     }
 
-    public static<K, V> MultimapX<K, V> newMultimap(Map<K, V> data){
+    public static <K, V> MultimapX<K, V> newMultimap(Map<? extends K, ? extends V> data) {
         MultimapX<K, V> result = new MultimapX<>();
-        for (Map.Entry<K, V> entry : data.entrySet()) {
+        for (Map.Entry<? extends K, ? extends V> entry : data.entrySet()) {
             result.put(entry.getKey(), entry.getValue());
         }
         return result;
     }
 
-    public int countByKey(Predicate<K> predicate) {
+    public int countByKey(Predicate<? super K> predicate) {
         int total = 0;
         for (K key : keys()) {
-            if(predicate.test(key)) {
-                total ++;
+            if (predicate.test(key)) {
+                total++;
             }
         }
         return total;
@@ -48,17 +46,17 @@ public class MultimapX<K, V> {
         return data.containsKey(k);
     }
 
-    public SetX<K> keys(){
+    public SetX<K> keys() {
         return data.keySet();
     }
 
-    public ListX<SetX<V>> values(){
+    public ListX<SetX<V>> values() {
         return data.values();
     }
 
     public CollectionX<PairX<K, V>> entries() {
         return data.entrySet().flatmap(entry -> entry.getValue()
-                                        .map(v -> PairX.pairOf(entry.getKey(), v)));
+                .map(v -> PairX.pairOf(entry.getKey(), v)));
     }
 
     public boolean put(K k, V v) {

@@ -1,19 +1,17 @@
 package com.github.collectionx;
 
-import com.github.collectionx.internal.PairX;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class MapX<K, V> extends HashMap<K, V> implements MapXContract<K, V>{
+public class MapX<K, V> extends HashMap<K, V> implements MapXContract<K, V> {
 
     public static <K, V> MapX<K, V> newMap() {
         return new MapX<>();
     }
 
-    public static <K, V> MapX<K, V> newMap(Map<K,V> map) {
+    public static <K, V> MapX<K, V> newMap(Map<? extends K, ? extends V> map) {
         MapX<K, V> result = new MapX<>();
         result.putAll(map);
         return result;
@@ -43,9 +41,9 @@ public class MapX<K, V> extends HashMap<K, V> implements MapXContract<K, V>{
         return ofEntries(entryOf(k1, v1), entryOf(k2, v2), entryOf(k3, v3), entryOf(k4, v4), entryOf(k5, v5));
     }
 
-    public static <K, V> MapX<K, V> ofEntries(Entry<K, V>... entries) {
+    public static <K, V> MapX<K, V> ofEntries(Entry<? extends K, ? extends V>... entries) {
         MapX<K, V> result = new MapX<K, V>();
-        for (Entry<K, V> entry : entries) {
+        for (Entry<? extends K, ? extends V> entry : entries) {
             result.put(entry.getKey(), entry.getValue());
         }
         return result;
@@ -55,30 +53,30 @@ public class MapX<K, V> extends HashMap<K, V> implements MapXContract<K, V>{
         return new PairX<>(k, v);
     }
 
-    public MapX<K, V> filter(Predicate<Entry<?super K, ?super V>>predicate) {
+    public MapX<K, V> filter(Predicate<Entry<? super K, ? super V>> predicate) {
         MapX<K, V> result = MapX.newMap();
         for (Entry<K, V> entry : this.entrySet()) {
-            if(predicate.test(entry)) {
+            if (predicate.test(entry)) {
                 result.put(entry.getKey(), entry.getValue());
             }
         }
         return result;
     }
 
-    public MapX<K, V> filterKey(Predicate<? super K>predicate) {
+    public MapX<K, V> filterKey(Predicate<? super K> predicate) {
         MapX<K, V> result = MapX.newMap();
         for (Entry<K, V> entry : this.entrySet()) {
-            if(predicate.test(entry.getKey())) {
+            if (predicate.test(entry.getKey())) {
                 result.put(entry.getKey(), entry.getValue());
             }
         }
         return result;
     }
 
-    public MapX<K, V> filterValue(Predicate<? super V>predicate) {
+    public MapX<K, V> filterValue(Predicate<? super V> predicate) {
         MapX<K, V> result = MapX.newMap();
         for (Entry<K, V> entry : this.entrySet()) {
-            if(predicate.test(entry.getValue())) {
+            if (predicate.test(entry.getValue())) {
                 result.put(entry.getKey(), entry.getValue());
             }
         }

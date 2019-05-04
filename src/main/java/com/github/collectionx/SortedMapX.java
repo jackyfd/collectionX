@@ -1,8 +1,6 @@
 package com.github.collectionx;
 
 
-import com.github.collectionx.internal.PairX;
-
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
@@ -14,7 +12,7 @@ public class SortedMapX<K extends Comparable<K>, V> extends TreeMap<K, V> implem
         return new SortedMapX<>();
     }
 
-    public static <K extends Comparable<K>, V> SortedMapX<K, V> newSortedMap(Map<K,V> map) {
+    public static <K extends Comparable<K>, V> SortedMapX<K, V> newSortedMap(Map<? extends K, ? extends V> map) {
         SortedMapX<K, V> result = new SortedMapX<>();
         result.putAll(map);
         return result;

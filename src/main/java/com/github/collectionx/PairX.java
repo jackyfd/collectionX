@@ -1,4 +1,4 @@
-package com.github.collectionx.internal;
+package com.github.collectionx;
 
 import java.util.Map;
 
@@ -23,6 +23,14 @@ public class PairX<K, V> implements Map.Entry<K, V> {
 
     @Override
     public V getValue() {
+        return v;
+    }
+
+    public K first() {
+        return k;
+    }
+
+    public V second() {
         return v;
     }
 

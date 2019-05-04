@@ -1,10 +1,9 @@
 package com.github.collectionx;
 
-import com.github.collectionx.internal.PairX;
 import org.junit.Test;
 
 import static com.github.collectionx.ListX.with;
-import static com.github.collectionx.internal.PairX.pairOf;
+import static com.github.collectionx.PairX.pairOf;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.*;
 

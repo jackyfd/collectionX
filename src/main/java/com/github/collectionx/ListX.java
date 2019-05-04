@@ -1,6 +1,5 @@
 package com.github.collectionx;
 
-import com.github.collectionx.internal.PairX;
 import com.github.collectionx.internal.Preconditions;
 
 import java.util.*;
