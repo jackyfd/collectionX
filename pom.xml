@@ -5,6 +5,34 @@
     <groupId>com.github.jacky-cai</groupId>
     <artifactId>collectionx</artifactId>
     <version>0.0.2-SNAPSHOT</version>
+
+    <name>CollectionX</name>
+    <description>a simple but powerful collection libs for java8</description>
+    <url>https://github.com/Jacky-Cai/collectionX</url>
+
+    <organization>
+        <url>https://github.com/Jacky-Cai</url>
+        <name>Jacky.Cai</name>
+    </organization>
+    <inceptionYear>2019</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Jacky Cai</name>
+            <email>jackycai1983@gmail.com</email>
+            <organization>Jacky.Cai</organization>
+            <organizationUrl>https://github.com/Jacky-Cai</organizationUrl>
+            <timezone>UTC+08:30</timezone>
+        </developer>
+    </developers>
+
     <scm>
         <connection>scm:git:git://github.com/Jacky-Cai/collectionX.git</connection>
         <developerConnection>scm:git:git@github.com:Jacky-Cai/collectionX.git</developerConnection>
