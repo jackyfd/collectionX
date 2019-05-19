@@ -4,12 +4,12 @@
 
     <groupId>com.github.jacky-cai</groupId>
     <artifactId>collectionx</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <scm>
         <connection>scm:git:git://github.com/Jacky-Cai/collectionX.git</connection>
         <developerConnection>scm:git:git@github.com:Jacky-Cai/collectionX.git</developerConnection>
         <url>https://github.com/Jacky-Cai/collectionX</url>
-        <tag>collectionx-0.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
