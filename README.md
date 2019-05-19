@@ -1,17 +1,24 @@
 # collectionX
-simple but compatible and powerful collections implementation for java 8 
 
-Features:
+简单确强大的java8集合实现, 适合应用于业务系统开发.
+特点:
+1. fluent API和lambda支持，不需要反复使用stream()和collect()  
+2. 兼容java.util的原生实现, 意味着可以直接替换java.util集合类
+3. 经过详细测试并性能优化
+   
+
+Simple but compatible and powerful collections implementation for java 8, suited for business application development.
+Features include:
 1. fluent API with lambda support, no need to call stream() and collect() again and again 
 2. well compatible with native collection implementation in java.util
-3. performance optimized and welll tested
+3. performance optimized and well tested
 
 Example Usage: 
 *  ListX 
 ```java
     ListX.newList("1", "2", "3", "4")
-      .map(it -> Integer.parseInt(it)) // ListX.newList(1,2,3,4)
-      .filter(it -> it > 2)            // ListX.newList(3,4)
+      .map(it -> Integer.parseInt(it)) // [1,2,3,4]
+      .filter(it -> it > 2)            // [3,4]
       .mkString(",", "{", "}")         // "{3,4}" 
       
     ListX.newList("1", "20", "300", "400")
