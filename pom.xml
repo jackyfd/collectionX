@@ -4,7 +4,7 @@
 
     <groupId>com.github.jacky-cai</groupId>
     <artifactId>collectionx</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <name>CollectionX</name>
     <description>a simple but powerful collection libs for java8</description>
