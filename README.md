@@ -5,7 +5,14 @@
 1. fluent API和lambda支持，不需要反复使用stream()和collect()  
 2. 兼容java.util的原生实现, 意味着可以直接替换java.util集合类
 3. 经过详细测试并性能优化
-   
+
+##使用方法:
+
+<dependency>
+  <groupId>com.github.jacky-cai</groupId>
+  <artifactId>collectionx</artifactId>
+  <version>0.0.1</version>
+</dependency>
 
 Simple but compatible and powerful collections implementation for java 8, suited for business application development.
 Features include:
