@@ -161,6 +161,10 @@ public class ListX<E> extends ArrayList<E> implements Ordered<E> {
         return toSet().toList();
     }
 
+    public ListX<E> distinctBy(Function<? super E, ?>keyFunc) {
+        return this.groupBy(keyFunc).values();
+    }
+
     ///// deprecate the methods with side effects
 
     @Override

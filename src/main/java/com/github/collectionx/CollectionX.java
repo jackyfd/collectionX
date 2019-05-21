@@ -57,7 +57,7 @@ public interface CollectionX<E> extends Collection<E> {
         return SetX.newSet(this);
     }
 
-    default <K> MapX<K, E> groupBy(Function<E, K> keyFun) {
+    default <K> MapX<K, E> groupBy(Function<? super E, ? extends K> keyFun) {
         MapX<K, E> result = MapX.newMap();
         for (E e : this) {
             result.put(keyFun.apply(e), e);
@@ -65,7 +65,7 @@ public interface CollectionX<E> extends Collection<E> {
         return result;
     }
 
-    default <K> MultimapX<K, E> groupByWithMutiValue(Function<? super E, K> keyFun) {
+    default <K> MultimapX<K, E> groupByWithMutiValue(Function<? super E, ? extends K> keyFun) {
         MultimapX<K, E> result = new MultimapX<>();
         for (E e : this) {
             result.put(keyFun.apply(e), e);

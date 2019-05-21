@@ -63,7 +63,7 @@ public class SortedSetX<E extends Comparable<E>> extends TreeSet<E> implements O
     }
 
     public SortedSetX<E> intersect(Set<?extends E> other) {
-        SortedSetX<E> result = SortedSetX.with();
+        SortedSetX<E> result = SortedSetX.newSet();
         for (E e : this) {
             if (other.contains(e)) {
                 result.add(e);
@@ -79,7 +79,7 @@ public class SortedSetX<E extends Comparable<E>> extends TreeSet<E> implements O
     }
 
     public SortedSetX<E> subtract(Set<? extends E> other) {
-        SortedSetX<E> result = SortedSetX.with();
+        SortedSetX<E> result = SortedSetX.newSet();
         for (E e : this) {
             if (!other.contains(e)) {
                 result.add(e);

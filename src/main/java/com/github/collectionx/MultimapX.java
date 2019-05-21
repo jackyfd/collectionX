@@ -86,12 +86,7 @@ public class MultimapX<K, V> {
     }
 
     public SetX<V> getOrCreate(K k) {
-        SetX<V> values = data.get(k);
-        if (values == null) {
-            values = SetX.newSet();
-            data.put(k, values);
-        }
-        return values;
+       return data.computeIfAbsent(k, k1 -> SetX.newSet());
     }
 
     @Override
