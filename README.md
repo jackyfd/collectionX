@@ -8,11 +8,13 @@
 
 ##使用方法:
 
+```xml
 <dependency>
   <groupId>com.github.jacky-cai</groupId>
   <artifactId>collectionx</artifactId>
   <version>0.0.1</version>
 </dependency>
+```
 
 Simple but compatible and powerful collections implementation for java 8, suited for business application development.
 Features include:
