@@ -14,6 +14,12 @@ public class ListXTest {
     private final ListX<Integer> emptyList = with();
 
     @Test
+    public void mkString() {
+        assertEquals("1", ListX.newList(1).mkString(","));
+        assertEquals("1,2,3", listOne.mkString(","));
+    }
+
+    @Test
     public void count() {
         assertEquals(2, listOne.count(it -> it >= 2));
     }

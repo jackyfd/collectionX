@@ -110,12 +110,13 @@ public interface CollectionX<E> extends Collection<E> {
     default String mkString(String separator, String start, String end) {
         StringBuilder sb = new StringBuilder(start);
         int i = 0;
+        int size = size();
         for (E e : this) {
             sb.append(e);
-            if (i > 0 && i < size() - 1) {
+            if (i < size - 1) {
                 sb.append(separator);
             }
-            if (i == size() - 1) {
+            if (i == size - 1) {
                 sb.append(end);
             }
             i++;
