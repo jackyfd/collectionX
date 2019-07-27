@@ -1,9 +1,6 @@
 package com.github.collectionx;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class SetX<E> extends HashSet<E> implements CollectionX<E> {
 
@@ -15,6 +12,18 @@ public class SetX<E> extends HashSet<E> implements CollectionX<E> {
         return new SetX<>(array);
     }
 
+    public static <E> SetX<E> newSet(Iterator<? extends E> iterator) {
+        SetX<E> result = SetX.newSet();
+        while (iterator.hasNext()) {
+            result.add(iterator.next());
+        }
+        return result;
+    }
+
+    public static <E> SetX<E> newSet(Iterable<? extends E> iterable) {
+        return SetX.newSet(iterable.iterator());
+    }
+
     public static <E> SetX<E> newSet(Collection<? extends E> collection) {
         return new SetX<>(collection);
     }
@@ -24,7 +33,7 @@ public class SetX<E> extends HashSet<E> implements CollectionX<E> {
     }
 
     public static <E> SetX<E> from(E... array) {
-        return newSet(array);
+        return with(array);
     }
 
     public SetX() {

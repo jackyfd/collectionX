@@ -54,7 +54,7 @@ public class MapXTest {
 
     @Test
     public void flip() {
-
+        assertEquals(2, mapOne.flip().size());
     }
 
 }

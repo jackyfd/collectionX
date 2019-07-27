@@ -14,12 +14,24 @@ public class ListX<E> extends ArrayList<E> implements Ordered<E> {
         return new ListX<>();
     }
 
-    public static <E> ListX<E> newList(E ... array) {
+    public static <E> ListX<E> newList(E... array) {
         return new ListX<>(array);
+    }
+
+    public static <E> ListX<E> newList(Iterator<? extends E> iterator) {
+        ListX<E> result = ListX.newList();
+        while (iterator.hasNext()) {
+            result.add(iterator.next());
+        }
+        return result;
     }
 
     public static <E> ListX<E> newList(Collection<? extends E> data) {
         return new ListX<>(data);
+    }
+
+    public static <E> ListX<E> newList(Iterable<? extends E> iterable) {
+        return newList(iterable.iterator());
     }
 
     public static <E> ListX<E> newListWithCapacity(int n) {
@@ -76,6 +88,7 @@ public class ListX<E> extends ArrayList<E> implements Ordered<E> {
 
     /**
      * partition the original by fixed sized bucket
+     *
      * @param n: max size of bucket
      * @return list of buckets of elements
      */
@@ -153,11 +166,11 @@ public class ListX<E> extends ArrayList<E> implements Ordered<E> {
         return result;
     }
 
-        public E reduce(BiFunction<? super E, ? super E, E> func) {
+    public E reduce(BiFunction<? super E, ? super E, E> func) {
         return tail().folder(head(), func);
     }
 
-    public ListX<E> distinct(){
+    public ListX<E> distinct() {
         return toSet().toList();
     }
 

@@ -7,6 +7,10 @@ import java.util.function.Predicate;
 
 public interface Ordered<E> extends CollectionX<E> {
 
+    default E first() {
+        return head();
+    }
+
     default E head() {
         if(isEmpty()) {
             throw new IllegalStateException("empty collection");

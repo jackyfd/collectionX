@@ -16,6 +16,10 @@ public class PairX<K, V> implements Map.Entry<K, V> {
         this.v = v;
     }
 
+    public PairX<V, K> flip() {
+        return PairX.pairOf(v, k);
+    }
+
     @Override
     public K getKey() {
         return k;

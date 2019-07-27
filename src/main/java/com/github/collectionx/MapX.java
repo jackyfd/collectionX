@@ -52,7 +52,7 @@ public class MapX<K, V> extends HashMap<K, V> implements MapXContract<K, V> {
     private static <K, V> Entry<K, V> entryOf(K k, V v) {
         return new PairX<>(k, v);
     }
-
+    
     public MapX<K, V> filter(Predicate<Entry<? super K, ? super V>> predicate) {
         MapX<K, V> result = MapX.newMap();
         for (Entry<K, V> entry : this.entrySet()) {
